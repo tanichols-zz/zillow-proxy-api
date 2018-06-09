@@ -6,7 +6,7 @@ const app = express()
 
 app.use(cors())
 
-app.get('/', (req, res) => {
+app.get('/zillow', (req, res) => {
   // parse query params
   const street = req.query.street
   const citystatezip = req.query.citystatezip
@@ -34,6 +34,10 @@ app.get('/', (req, res) => {
     .catch(error => {
       return res.json(error)
     })
+})
+
+app.get('/', (req, res) => {
+  res.json('Hello World');
 })
 
 app.listen(3000, () => console.log('Zillow API listening on port 3000!'))
