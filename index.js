@@ -12,12 +12,14 @@ app.get('/zillow', (req, res) => {
   // parse query params
   const street = req.query.street
   const citystatezip = req.query.citystatezip
+  console.log(street)
+  console.log(citystatezip)
   // query zillow for address
   axios.get(`http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz18kyhv9kzd7_6frtk&address=${street}&citystatezip=${citystatezip}&rentzestimate=true`)
     .then(result => {
       // parse data
       parseString(result.data, (error, result) => {
-        if (err) {
+        if (error) {
           return res.json(error)
         }
         const addressData = result["SearchResults:searchresults"].response[0].results[0].result[0]
@@ -42,4 +44,4 @@ app.get('/', (req, res) => {
   res.json('Hello World');
 })
 
-app.listen(PORT, () => console.log('Zillow API listening on port 3000!'))
+app.listen(PORT, () => console.log(`Zillow API listening on port ${PORT}!`))
