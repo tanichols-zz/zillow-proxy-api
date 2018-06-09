@@ -4,6 +4,8 @@ const cors = require('cors')
 var parseString = require('xml2js').parseString
 const app = express()
 
+const PORT = process.env.PORT || 5000
+
 app.use(cors())
 
 app.get('/zillow', (req, res) => {
@@ -40,4 +42,4 @@ app.get('/', (req, res) => {
   res.json('Hello World');
 })
 
-app.listen(3000, () => console.log('Zillow API listening on port 3000!'))
+app.listen(PORT, () => console.log('Zillow API listening on port 3000!'))
