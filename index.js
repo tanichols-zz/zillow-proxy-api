@@ -23,10 +23,10 @@ app.get('/zillow', (req, res) => {
           return res.json(error)
         }
         const addressData = result["SearchResults:searchresults"].response[0].results[0].result[0]
-        const zpid = addressData.zpid[0]
-        const zestimate = addressData.zestimate[0].amount[0]._
-        const rentZestimate = addressData.rentzestimate[0].amount[0]._
-        const yearBuilt = addressData.yearBuilt[0]
+        const zpid = parseInt(addressData.zpid[0])
+        const zestimate = parseInt(addressData.zestimate[0].amount[0]._)
+        const rentZestimate = parseInt(addressData.rentzestimate[0].amount[0]._)
+        const yearBuilt = parseInt(addressData.yearBuilt[0])
         return res.json({
           zpid,
           zestimate,
