@@ -1,7 +1,10 @@
 const express = require('express')
 const axios = require('axios')
+const cors = require('cors')
 var parseString = require('xml2js').parseString
 const app = express()
+
+app.use(cors())
 
 app.get('/', (req, res) => {
   // parse query params
