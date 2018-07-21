@@ -43,7 +43,12 @@ app.get('/zillow', (req, res) => {
       })
     })
     .catch(error => {
-      return res.json(error)
+      console.log('error')
+      res.status(400)
+      return res.json({
+        status: 400,
+        error: 'Details could not be found for the requested property'
+      })
     })
 })
 
